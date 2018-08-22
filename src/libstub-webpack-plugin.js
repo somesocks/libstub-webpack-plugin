@@ -79,9 +79,8 @@ LibstubPlugin.prototype.hookAfterModuleResolve = function (result, callback) {
 // };
 
 LibstubPlugin.prototype.hookEmit = function (compilation, callback) {
-	console.log('LibstubPlugin.hookEmit compilation.outputOptions', compilation.outputOptions);
-
-	console.log('LibstubPlugin.hookEmit compilation.assets', compilation.assets);
+	// console.log('LibstubPlugin.hookEmit compilation.outputOptions', compilation.outputOptions);
+	// console.log('LibstubPlugin.hookEmit compilation.assets', compilation.assets);
 
 	const manifestContent = manifestTemplate(this._toStub);
 
@@ -110,7 +109,7 @@ LibstubPlugin.prototype.hookModuleFactory = function (moduleFactory) {
 };
 
 LibstubPlugin.prototype.apply = function (compiler) {
-	console.log('LibstubPlugin.apply compiler.hooks', compiler.hooks);
+	// console.log('LibstubPlugin.apply compiler.hooks', compiler.hooks);
 
 	compiler.hooks.normalModuleFactory.tap('LibstubPlugin', this.hookModuleFactory);
 	compiler.hooks.contextModuleFactory.tap('LibstubPlugin', this.hookModuleFactory);

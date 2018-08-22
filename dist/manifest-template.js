@@ -17,7 +17,5 @@ const libstub = require('libstub');
 ${exports}
 `;
 
-	console.log('manifestTemplate', content);
-
 	return content;
 };
