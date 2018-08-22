@@ -22,7 +22,7 @@ function LibstubPlugin(options) {
 
 	self.prepareStub = (next, name) => prepareStub(next, self, name);
 
-	self.hookCompilation = self.hookCompilation.bind(self);
+	// self.hookCompilation = self.hookCompilation.bind(self);
 	self.hookModuleFactory = self.hookModuleFactory.bind(self);
 
 	self.hookBeforeModuleResolve = self.hookBeforeModuleResolve.bind(self);
@@ -35,7 +35,7 @@ function LibstubPlugin(options) {
 
 
 LibstubPlugin.prototype.hookBeforeModuleResolve = function (request) {
-	console.log('LibstubPlugin.hookBeforeModuleResolve request', request);
+	// console.log('LibstubPlugin.hookBeforeModuleResolve request', request);
 	if (
 		request.contextInfo &&
 		request.contextInfo.issuer &&
@@ -46,13 +46,13 @@ LibstubPlugin.prototype.hookBeforeModuleResolve = function (request) {
 };
 
 LibstubPlugin.prototype.hookAfterModuleResolve = function (result, callback) {
-	console.log('LibstubPlugin.hookAfterModuleResolve result', result.rawRequest);
+	// console.log('LibstubPlugin.hookAfterModuleResolve result', result.rawRequest);
 
 	if (!this.shouldStub(result.rawRequest)) {
-		console.log('LibstubPlugin.hookAfterModuleResolve no stub', result.rawRequest);
+		// console.log('LibstubPlugin.hookAfterModuleResolve no stub', result.rawRequest);
 		callback(null, result);
 	} else {
-		console.log('LibstubPlugin.hookAfterModuleResolve stubbing', result.rawRequest);
+		// console.log('LibstubPlugin.hookAfterModuleResolve stubbing', result.rawRequest);
 
 		const task = InSeries(
 			(next, plugin, result) => next(null, plugin, result),
@@ -61,7 +61,7 @@ LibstubPlugin.prototype.hookAfterModuleResolve = function (result, callback) {
 				(next, plugin, result) => plugin.prepareStub(next, result.rawRequest),
 			),
 			(next, [ plugin, result ], [ stubPath ]) => {
-				console.log('LibstubPlugin.hookAfterModuleResolve stubbed', stubPath);
+				// console.log('LibstubPlugin.hookAfterModuleResolve stubbed', stubPath);
 
 				result.resource = stubPath;
 				next(null, result);
@@ -72,24 +72,24 @@ LibstubPlugin.prototype.hookAfterModuleResolve = function (result, callback) {
 	}
 };
 
-LibstubPlugin.prototype.hookCompilation = function (compilation) {
-	// console.log('LibstubPlugin.hookCompilation compilation.hooks', compilation.hooks);
-};
+// LibstubPlugin.prototype.hookCompilation = function (compilation) {
+// 	// console.log('LibstubPlugin.hookCompilation compilation.hooks', compilation.hooks);
+// };
 
 LibstubPlugin.prototype.hookModuleFactory = function (moduleFactory) {
-	console.log('LibstubPlugin.hookModuleFactory moduleFactory.hooks', moduleFactory.hooks);
+	// console.log('LibstubPlugin.hookModuleFactory moduleFactory.hooks', moduleFactory.hooks);
 
 	moduleFactory.hooks.beforeResolve.tap('LibstubPlugin', this.hookBeforeModuleResolve);
 	moduleFactory.hooks.afterResolve.tapAsync('LibstubPlugin', this.hookAfterModuleResolve);
 };
 
 LibstubPlugin.prototype.apply = function (compiler) {
-	console.log('LibstubPlugin.apply compiler.hooks', compiler.hooks);
+	// console.log('LibstubPlugin.apply compiler.hooks', compiler.hooks);
 
 	compiler.hooks.normalModuleFactory.tap('LibstubPlugin', this.hookModuleFactory);
 	compiler.hooks.contextModuleFactory.tap('LibstubPlugin', this.hookModuleFactory);
 
-	compiler.hooks.compilation.tap('LibstubPlugin', this.hookCompilation);
+	// compiler.hooks.compilation.tap('LibstubPlugin', this.hookCompilation);
 
 	//
 	// compiler.hooks.normalModuleFactory.tap("IgnorePlugin", nmf => {

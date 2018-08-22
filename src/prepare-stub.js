@@ -5,7 +5,7 @@ const stubTemplate = require('./stub-template');
 const { InSeries, InParallel, PassThrough, If, Logging } = require('uchain');
 
 const createTempFile = InSeries(
-	Logging('createTempFile', (name) => name),
+	// Logging('createTempFile', (name) => name),
 	(next, name) => next(null, { prefix: `${name}.`, postfix: '.libstub-webpack-plugin.stub.js' }),
 	(next, options) => tmp.file(options, next),
 	(next, path, fd) => next(null, path)
@@ -16,7 +16,7 @@ const buildStubContent = (next, name) => next(null, stubTemplate(name));
 const writeStubContent = (next, path, content) => fs.writeFile(path, content, next);
 
 const buildStub = InSeries(
-	Logging('buildStub', (name) => name),
+	// Logging('buildStub', (name) => name),
 	(next, name) => next(null, { name }),
 	InParallel(
 		PassThrough,
@@ -36,7 +36,7 @@ const buildStub = InSeries(
 );
 
 const buildWrapper = InSeries(
-	Logging('buildWrapper', (plugin, name) => name),
+	// Logging('buildWrapper', (plugin, name) => name),
 	(next, plugin, name) => next(null, plugin, name),
 	InParallel(
 		PassThrough,
@@ -50,7 +50,7 @@ const buildWrapper = InSeries(
 );
 
 const conditionalWrapper = InSeries(
-	Logging('conditionalWrapper', (plugin, name) => name),
+	// Logging('conditionalWrapper', (plugin, name) => name),
 	(next, plugin, name) => next(null, plugin, name),
 	If(
 		(next, plugin, name) => next(null, plugin._stubs[name] != null),
