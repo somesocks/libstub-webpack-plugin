@@ -13,9 +13,9 @@ const BUILD_DIR = path.normalize(`${__dirname}/../test/dist/`);
 const plugins = [
 	LibstubPlugin(
 		{
-			consume: [ 'vet', 'uchain' ],
-			// consume: [ 'vet' ],
-			// consume: [ ],
+			toStub: [ 'vet', 'uchain' ],
+			// toStub: [ 'uchain' ],
+			// toStub: [ ],
 		}
 	),
 	// new Webpack.IgnorePlugin(/vet/),

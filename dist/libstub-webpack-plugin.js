@@ -2,6 +2,7 @@
 const path = require('path');
 
 const prepareStub = require('./prepare-stub');
+const manifestTemplate = require('./manifest-template');
 
 const { InSeries, InParallel, PassThrough } = require('uchain');
 
@@ -15,14 +16,15 @@ function LibstubPlugin(options) {
 
 	const self = this instanceof LibstubPlugin ? this : Object.create(LibstubPlugin.prototype);
 
-	self.consume = options.consume || [];
+	self._toStub = options.toStub || [];
 	self._stubs = {};
 
-	self.shouldStub = isOneOf(...self.consume);
+	self.shouldStub = isOneOf(...self._toStub);
 
 	self.prepareStub = (next, name) => prepareStub(next, self, name);
 
 	// self.hookCompilation = self.hookCompilation.bind(self);
+	self.hookEmit = self.hookEmit.bind(self);
 	self.hookModuleFactory = self.hookModuleFactory.bind(self);
 
 	self.hookBeforeModuleResolve = self.hookBeforeModuleResolve.bind(self);
@@ -73,8 +75,32 @@ LibstubPlugin.prototype.hookAfterModuleResolve = function (result, callback) {
 };
 
 // LibstubPlugin.prototype.hookCompilation = function (compilation) {
-// 	// console.log('LibstubPlugin.hookCompilation compilation.hooks', compilation.hooks);
+// 	console.log('LibstubPlugin.hookCompilation compilation.hooks', compilation.hooks);
 // };
+
+LibstubPlugin.prototype.hookEmit = function (compilation, callback) {
+	console.log('LibstubPlugin.hookEmit compilation.outputOptions', compilation.outputOptions);
+
+	console.log('LibstubPlugin.hookEmit compilation.assets', compilation.assets);
+
+	const manifestContent = manifestTemplate(this._toStub);
+
+	Object
+		.keys(compilation.assets)
+		.filter((name) => name.endsWith('.js'))
+		.map((name) => path.basename(name, '.js'))
+		.map((name) => `${name}.dependencies.js`)
+		.forEach(
+			(name) => {
+				compilation.assets[name] = {
+					source: () => manifestContent,
+					size: () => manifestContent.length
+				};
+			}
+		);
+
+	callback();
+};
 
 LibstubPlugin.prototype.hookModuleFactory = function (moduleFactory) {
 	// console.log('LibstubPlugin.hookModuleFactory moduleFactory.hooks', moduleFactory.hooks);
@@ -84,10 +110,12 @@ LibstubPlugin.prototype.hookModuleFactory = function (moduleFactory) {
 };
 
 LibstubPlugin.prototype.apply = function (compiler) {
-	// console.log('LibstubPlugin.apply compiler.hooks', compiler.hooks);
+	console.log('LibstubPlugin.apply compiler.hooks', compiler.hooks);
 
 	compiler.hooks.normalModuleFactory.tap('LibstubPlugin', this.hookModuleFactory);
 	compiler.hooks.contextModuleFactory.tap('LibstubPlugin', this.hookModuleFactory);
+
+	compiler.hooks.emit.tapAsync('LibstubPlugin', this.hookEmit);
 
 	// compiler.hooks.compilation.tap('LibstubPlugin', this.hookCompilation);
 
