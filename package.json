@@ -1,0 +1,34 @@
+{
+	"name": "libstub-webpack-plugin",
+	"version": "0.1.0",
+	"files": [
+		"dist",
+		"shrinkwrap.yaml"
+	],
+	"main": "dist",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/somesocks/libstub-webpack-plugin.git"
+	},
+	"bugs": {
+		"url": "https://github.com/somesocks/libstub-webpack-plugin/issues"
+	},
+	"homepage": "https://github.com/somesocks/libstub-webpack-plugin",
+	"keywords": [],
+	"author": "James Larsen (somesocks@gmail.com)",
+	"license": "MIT",
+	"devDependencies": {
+		"webpack": "^4.17.0"
+	},
+	"scripts": {
+		"build": "make build",
+		"test": "make test"
+	},
+	"dependencies": {
+		"handlebars-directory": "^1.0.0",
+		"libstub": "^2.0.0",
+		"tmp": "^0.0.33",
+		"uchain": "^0.17.0",
+		"vet": "^1.0.3"
+	}
+}
