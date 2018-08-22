@@ -6,7 +6,7 @@ const { InSeries, InParallel, PassThrough, If, Logging } = require('uchain');
 
 const createTempFile = InSeries(
 	// Logging('createTempFile', (name) => name),
-	(next, name) => next(null, { prefix: `${name}.`, postfix: '.libstub-webpack-plugin.stub.js' }),
+	(next, name) => next(null, { postfix: '.libstub-webpack-plugin.stub.js' }),
 	(next, options) => tmp.file(options, next),
 	(next, path, fd) => next(null, path)
 );
