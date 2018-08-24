@@ -48,7 +48,7 @@ function LibstubPlugin(options) {
 
 
 LibstubPlugin.prototype.hookBeforeModuleResolve = function (request, callback) {
-	console.log('LibstubPlugin.hookBeforeModuleResolve request', request);
+	// console.log('LibstubPlugin.hookBeforeModuleResolve request', request);
 
 	if (this.shouldResolveStub(request)) {
 		// console.log('LibstubPlugin.hookBeforeModuleResolve shouldResolveStub', request);
@@ -127,7 +127,7 @@ LibstubPlugin.prototype.hookEmit = function (compilation, callback) {
 };
 
 LibstubPlugin.prototype.hookModuleFactory = function (moduleFactory) {
-	console.log('LibstubPlugin.hookModuleFactory moduleFactory.hooks', moduleFactory.hooks);
+	// console.log('LibstubPlugin.hookModuleFactory moduleFactory.hooks', moduleFactory.hooks);
 
 	moduleFactory.hooks.beforeResolve.tapAsync('LibstubPlugin', this.hookBeforeModuleResolve);
 };
