@@ -5,7 +5,7 @@ dependencies:
   uchain: 0.17.0
   vet: 1.0.3
 devDependencies:
-  path: 0.12.7
+  moment: 2.22.2
   webpack: 4.17.0
 packages:
   /@webassemblyjs/ast/1.5.13:
@@ -1501,6 +1501,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
+  /moment/2.22.2:
+    dev: true
+    resolution:
+      integrity: sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
   /move-concurrently/1.0.1:
     dependencies:
       aproba: 1.2.0
@@ -1706,13 +1710,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-NlQX3t5EQw0cEa9hAn+s8HS9/FM=
-  /path/0.12.7:
-    dependencies:
-      process: 0.11.10
-      util: 0.10.4
-    dev: true
-    resolution:
-      integrity: sha1-1NwqUGxM4hl+tIHr/NWzbAFAsQ8=
   /pbkdf2/3.0.16:
     dependencies:
       create-hash: 1.2.0
@@ -2461,7 +2458,7 @@ shrinkwrapVersion: 3
 specifiers:
   handlebars-directory: ^1.0.0
   libstub: ^2.0.0
-  path: ^0.12.7
+  moment: ^2.22.2
   tmp: ^0.0.33
   uchain: ^0.17.0
   vet: ^1.0.3

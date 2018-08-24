@@ -30,7 +30,7 @@ function LibstubPlugin(options) {
 	self.isLib = isOneOf(...self._libsList);
 	self.shouldResolveLib = (request) =>
 		self.isLib(request.request) &&
-		!(request.contextInfo.issuer || '')
+		!(request.contextInfo ? (request.contextInfo.issuer || '') : '')
 			.endsWith('.libstub-webpack-plugin.lib.js');
 
 	self.prepareStub = (next, name) => prepareStub(next, self, name);
@@ -48,7 +48,7 @@ function LibstubPlugin(options) {
 
 
 LibstubPlugin.prototype.hookBeforeModuleResolve = function (request, callback) {
-	// console.log('LibstubPlugin.hookBeforeModuleResolve request', request);
+	console.log('LibstubPlugin.hookBeforeModuleResolve request', request);
 
 	if (this.shouldResolveStub(request)) {
 		// console.log('LibstubPlugin.hookBeforeModuleResolve shouldResolveStub', request);
@@ -89,8 +89,8 @@ LibstubPlugin.prototype.hookBeforeModuleResolve = function (request, callback) {
 
 		task(callback, this, request);
 	} else if (
-		(request.contextInfo.issuer || '').endsWith('.libstub-webpack-plugin.stub.js') ||
-		(request.contextInfo.issuer || '').endsWith('.libstub-webpack-plugin.lib.js')
+		(request.contextInfo ? (request.contextInfo.issuer || '') : '').endsWith('.libstub-webpack-plugin.stub.js') ||
+		(request.contextInfo ? (request.contextInfo.issuer || '') : '').endsWith('.libstub-webpack-plugin.lib.js')
 	) {
 		request.context = path.resolve(__dirname);
 		callback(null, request);

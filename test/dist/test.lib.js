@@ -96,17 +96,24 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../tmp/tmp-19139D3NXYyKKWyoe.libstub-webpack-plugin.stub.js":
+/***/ "../../../../tmp/tmp-2176YY4GEuz8lNZC.libstub-webpack-plugin.stub.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\n/**** libstub-webpack-plugin: auto-generated stub for uchain ****/\n\nconst libstub = __webpack_require__(\"./node_modules/.registry.npmjs.org/libstub/2.0.0/node_modules/libstub/dist/libstub.js\");\n\nmodule.exports = libstub.import('uchain');\n\n\n\n//# sourceURL=webpack:////tmp/tmp-19139D3NXYyKKWyoe.libstub-webpack-plugin.stub.js?");
+eval("\n/**** libstub-webpack-plugin: auto-generated stub for uchain ****/\n\nconst libstub = __webpack_require__(\"./node_modules/.registry.npmjs.org/libstub/2.0.0/node_modules/libstub/dist/libstub.js\");\n\nmodule.exports = libstub.import('uchain');\n\n\n\n//# sourceURL=webpack:////tmp/tmp-2176YY4GEuz8lNZC.libstub-webpack-plugin.stub.js?");
 
 /***/ }),
 
-/***/ "../../../../tmp/tmp-19139HDU1S7PUStGR.libstub-webpack-plugin.stub.js":
+/***/ "../../../../tmp/tmp-2176ZCmhlo50t0aR.libstub-webpack-plugin.stub.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\n/**** libstub-webpack-plugin: auto-generated stub for vet ****/\n\nconst libstub = __webpack_require__(\"./node_modules/.registry.npmjs.org/libstub/2.0.0/node_modules/libstub/dist/libstub.js\");\n\nmodule.exports = libstub.import('vet');\n\n\n\n//# sourceURL=webpack:////tmp/tmp-19139HDU1S7PUStGR.libstub-webpack-plugin.stub.js?");
+eval("\n/**** libstub-webpack-plugin: auto-generated stub for moment ****/\n\nconst libstub = __webpack_require__(\"./node_modules/.registry.npmjs.org/libstub/2.0.0/node_modules/libstub/dist/libstub.js\");\n\nmodule.exports = libstub.import('moment');\n\n\n\n//# sourceURL=webpack:////tmp/tmp-2176ZCmhlo50t0aR.libstub-webpack-plugin.stub.js?");
+
+/***/ }),
+
+/***/ "../../../../tmp/tmp-2176a0JkJiI2ku1c.libstub-webpack-plugin.stub.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\n/**** libstub-webpack-plugin: auto-generated stub for vet ****/\n\nconst libstub = __webpack_require__(\"./node_modules/.registry.npmjs.org/libstub/2.0.0/node_modules/libstub/dist/libstub.js\");\n\nmodule.exports = libstub.import('vet');\n\n\n\n//# sourceURL=webpack:////tmp/tmp-2176a0JkJiI2ku1c.libstub-webpack-plugin.stub.js?");
 
 /***/ }),
 
@@ -120,7 +127,7 @@ eval("var __WEBPACK_AMD_DEFINE_RESULT__;(function (_r, _f) {\n\tif (true) {\n\t\
 /***/ "./test/src/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\n__webpack_require__(\"../../../../tmp/tmp-19139HDU1S7PUStGR.libstub-webpack-plugin.stub.js\");\n\n__webpack_require__(\"../../../../tmp/tmp-19139D3NXYyKKWyoe.libstub-webpack-plugin.stub.js\");\n\n__webpack_require__(\"./node_modules/.registry.npmjs.org/libstub/2.0.0/node_modules/libstub/dist/libstub.js\");\n\n// this is a test bundle\n\nmodule.exports = \"test\";\n\n\n//# sourceURL=webpack:///./test/src/index.js?");
+eval("\n__webpack_require__(\"../../../../tmp/tmp-2176a0JkJiI2ku1c.libstub-webpack-plugin.stub.js\");\n\n__webpack_require__(\"../../../../tmp/tmp-2176YY4GEuz8lNZC.libstub-webpack-plugin.stub.js\");\n\n__webpack_require__(\"./node_modules/.registry.npmjs.org/libstub/2.0.0/node_modules/libstub/dist/libstub.js\");\n\n__webpack_require__(\"../../../../tmp/tmp-2176ZCmhlo50t0aR.libstub-webpack-plugin.stub.js\");\n\n// this is a test bundle\n\nmodule.exports = \"test\";\n\n\n//# sourceURL=webpack:///./test/src/index.js?");
 
 /***/ }),
 

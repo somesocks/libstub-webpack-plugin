@@ -13,7 +13,7 @@ const BUILD_DIR = path.normalize(`${__dirname}/../test/dist/`);
 const plugins = [
 	LibstubPlugin(
 		{
-			stubs: [ 'uchain', 'vet' ],
+			stubs: [ 'uchain', 'vet', 'moment' ],
 			// libs: [ 'uchain', 'vet' ],
 			// toStub: [ 'uchain' ],
 			// toStub: [ ],
